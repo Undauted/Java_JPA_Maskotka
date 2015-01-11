@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	 <h:outputStylesheet name="bootstrap/css/bootstrap.min.css" />
+     <h:outputStylesheet name="bootstrap/css/bootstrap-theme.min.css" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title><ui:insert name="windowTitle">#{msg.tytulStrony}</ui:insert>
+	</title>
+</h:head>
+<h:body>
+  <h:outputStylesheet library="css" name="api.css" target="body" />
+  
+	<div class="linki">
+	  <ui:insert name="linki">
+       <b>#{msg.nazwaProgramu}</b>
+     </ui:insert>
+     
+    </div>
+    <div class="przesuniecie">
+  		 <img src="http://cdn.bulbagarden.net/upload/thumb/7/72/613Cubchoo.png/180px-613Cubchoo.png" height='300' width='300'/>
+    </div>
+    <br/>
+	 <div class="menu">
+	 	
+	 	
+		 
+		      	<p><a class="btn btn-default" href="glowna.jsf" >	#{msg.glowna} &raquo;</a></p>
+				<p><a class="btn btn-default" href="dodanie.jsf" >#{msg.dodanieMaskotki} &raquo;</a></p>
+				<p><a class="btn btn-default" href="maps.jsf" >#{msg.mapaSklepow} &raquo;</a></p>
+			  	<p><a class="btn btn-default" href="lista.jsf" >#{msg.lis} &raquo;</a></p>
+			  	<p><a class="btn btn-default" href="przydzial.jsf" >#{msg.przydzialy} &raquo;</a></p>
+	
+	    	
+		 
+		
+		  	<br/>
+		  	
+  			<img src="http://cdn.bulbagarden.net/upload/thumb/7/72/613Cubchoo.png/180px-613Cubchoo.png" height='100' width='100'/>
+  
+      </div>
+	  <div class="glowna" style="overflow: auto; width:720px;  height: 450px">
+	     <ui:insert name="glowna" />
+		    
+      </div>
+      
+</h:body>
+</html>

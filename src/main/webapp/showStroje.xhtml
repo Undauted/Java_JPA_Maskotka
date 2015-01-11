@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	template="/templates/wyglad.xhtml">
+	
+	<ui:define name="glowna">
+	
+	<h:outputStylesheet name="bootstrap/css/bootstrap.min.css" />
+    <h:outputStylesheet name="bootstrap/css/bootstrap-theme.min.css" />
+    <h:form>
+    
+     <h:dataTable value="#{strojeBean.allStroje}" var="item" 
+   		headerClass="naglowek"
+   		rowClasses="nieparzyste,parzyste">
+      <f:facet name="header">#{msg.listaStrojenia}</f:facet>
+      
+      <h:column>
+        <f:facet name="header">#{msg.nazwaStroju}&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</f:facet>
+        #{item.nazwa}
+      </h:column>
+
+       <h:column>
+        <f:facet name="header">#{msg.materialStroju}</f:facet>
+        #{item.material}
+      </h:column>
+      
+      
+      <h:column>
+        <h:commandButton value="#{msg.edycja}" action="#{strojeBean.edycja}"/>
+       	<h:outputText value="&lt;br /&gt;" escape="false"/>
+        <h:commandButton value="#{msg.usun}" actionListener="#{strojeBean.deleteStroj}"/>
+        
+      </h:column>
+      
+     </h:dataTable>
+    </h:form>
+   
+	</ui:define>
+	
+</ui:composition>

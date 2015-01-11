@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	template="/templates/wyglad.xhtml">
+	<ui:define name="glowna">
+	
+		<h:form id="personform">
+			<h:outputStylesheet name="bootstrap/css/bootstrap.min.css" />
+    		<h:outputStylesheet name="bootstrap/css/bootstrap-theme.min.css" />
+			<h:panelGrid columns="2" >
+
+				<h:outputText value="#{msg.dodaj} :)&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;" />
+				<p><a class="btn btn-primary active" href="dodajMaskotke.jsf" >#{msg.przyciskDodaj}</a></p>
+
+				<h:outputText value="#{msg.dodajStroj}&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;" />
+				<p><a class="btn btn-primary active" href="dodajStroj.jsf" >#{msg.przyciskDodaj}</a></p>
+	
+				<h:outputText value="#{msg.dodajProducent}&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;" />
+				<p><a class="btn btn-primary active" href="dodajProducent.jsf" >#{msg.przyciskDodaj}</a></p>
+		
+			</h:panelGrid>
+			<h:panelGrid styleClass="centered">
+			<h:graphicImage value="http://www.robsbots.org.uk/wp-content/uploads/2013/01/plus.png" width="220" height="220"/>
+			</h:panelGrid>
+		</h:form>
+		
+	</ui:define>
+</ui:composition>

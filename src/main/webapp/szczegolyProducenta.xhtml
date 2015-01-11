@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	template="/templates/wyglad.xhtml">
+
+	<ui:define name="glowna">
+		
+		<h:outputStylesheet name="bootstrap/css/bootstrap.min.css" />
+	    <h:outputStylesheet name="bootstrap/css/bootstrap-theme.min.css" />
+	    <h:form>
+	    
+	     <h:dataTable value="#{producentBean.ownedMaskotka}" var="item" 
+	   		headerClass="naglowek"
+	   		rowClasses="nieparzyste,parzyste">
+	
+				<f:facet name="header">#{msg.Maskotkiproducenta}</f:facet>
+				<h:column>
+					<f:facet name="header">#{msg.imieMaskotki}</f:facet>
+					<h:outputText value="#{item.imie}" />
+				</h:column>
+		
+				<h:column>
+					<f:facet name="header">#{msg.rodzajMaskotki}</f:facet>
+					<h:outputText value="#{item.rodzaj}" />
+				</h:column>
+				
+				<h:column>
+					<f:facet name="header">#{msg.materialMaskotki}</f:facet>
+					<h:outputText value="#{item.material}" />
+				</h:column>
+				
+				<h:column>
+					<f:facet name="header">#{msg.dataZakupu}</f:facet>
+					<h:outputText value="#{item.dateOfBirth}" />
+				</h:column>
+				
+				<h:column>
+					<f:facet name="header">#{msg.zdjecieMaskotki}</f:facet>
+					 <h:graphicImage value="#{item.zdjecie}" width="70" height="70"/>
+				</h:column>
+
+				<h:column>
+					
+					<h:commandButton value="#{msg.usun}"
+						action="#{producentBean.disposeMaskotka}" />
+				</h:column>
+
+			</h:dataTable>
+		</h:form>
+
+	</ui:define>
+
+</ui:composition>

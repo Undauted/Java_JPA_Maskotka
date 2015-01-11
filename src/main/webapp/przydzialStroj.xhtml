@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	template="/templates/wyglad.xhtml"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich">
+
+	<ui:define name="glowna">
+		<h:form id="personForm">
+			<h:panelGrid columns="2">
+			
+			<h:outputText value="" />
+				<h:outputText value="&#160;&#160;&#160;&#160;&#160;&#160;
+				&#160;&#160;&#160;&#160;&#160;
+				&#160;&#160;&#160;&#160;
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;#{msg.przydzielanie}" />
+
+				<h:outputText value="&lt;br /&gt;" escape="false"/>
+				<h:outputText value="&lt;br /&gt;" escape="false"/>
+
+				<h:outputText value=" #{msg.tytulStrony}&#160;&#160;&#160;&#160;" />
+				<h:selectOneMenu value="#{strojeBean.maskotkaId}">
+					<f:selectItems value="#{strojeBean.allMaskotka}" var="maskotka"
+						itemValue="#{maskotka.id}" itemLabel="#{maskotka.imie} #{maskotka.rodzaj}" />
+				</h:selectOneMenu>
+
+				<h:outputText value="&lt;br /&gt;" escape="false"/>
+				<h:outputText value="&lt;br /&gt;" escape="false"/>
+			
+				
+				<h:outputText value=" #{msg.stroj}&#160;&#160;&#160;&#160;" />
+				<h:selectOneMenu value="#{strojeBean.strojeId}">
+					<f:selectItems value="#{strojeBean.availableStroje}" var="stroje"
+						itemValue="#{stroje.id}" itemLabel="#{stroje.nazwa} #{stroje.material}" />
+				</h:selectOneMenu>
+
+				<h:outputText value="&lt;br /&gt;" escape="false"/>
+				<h:outputText value="&lt;br /&gt;" escape="false"/>
+
+			</h:panelGrid>
+			
+			<h:outputText value="&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;"/>
+			<h:commandButton value="#{msg.przydziel}" action="#{strojeBean.sellStroje}" />
+
+			<h:panelGrid>
+				<h:messages id="messages" showDetail="#{true}"
+					showSummary="#{false}" />
+			</h:panelGrid>
+
+		</h:form>
+
+	</ui:define>
+</ui:composition>

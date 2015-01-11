@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	template="/templates/wyglad.xhtml"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:maskotka="http://maskotka.com/facelets">
+	<ui:define name="glowna">
+		
+		<h:form id="personForm">
+			<h:panelGrid columns="2">
+				
+				<h:outputText value="" />
+				<h:outputText value="&#160;&#160;&#160;&#160;&#160;&#160;
+				&#160;&#160;&#160;&#160;&#160;
+				&#160;&#160;&#160;&#160;
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;#{msg.edycja}" />
+				
+				<h:outputText value="&lt;br /&gt;" escape="false"/>
+				<h:outputText value="&lt;br /&gt;" escape="false"/>
+				
+				<h:outputText value="#{maskotkaBean.maskotka.setImie(maskotkaBean.maskotka.imie)}" />
+				<h:outputText value="#{maskotkaBean.maskotka.setRodzaj(maskotkaBean.maskotka.rodzaj)}" />
+				
+				<h:outputText value="#{maskotkaBean.maskotka.setMaterial(maskotkaBean.maskotka.material)}" />
+				<h:outputText value="#{maskotkaBean.maskotka.setZdjecie(maskotkaBean.maskotka.zdjecie)}" />
+				
+				
+				<h:outputText value="" />
+				<f:verbatim>  
+					<script type="text/javascript">  
+						function initCap(inputField)
+						{
+						var v = inputField.value;
+						var f = v.charAt(0).toUpperCase();
+						inputField.value = f + v.substring(1,v.length);
+						}
+					</script>  
+				</f:verbatim>  
+				
+				<h:outputText value="#{msg.imieMaskotki}&#160;&#160;&#160;&#160;" />
+				<h:inputText id="name" value="#{maskotkaBean.maskotka.imie}" 
+					 required="#{true}" onchange="initCap(this)">
+				<f:ajax execute="@this" render="messages beanState" />
+				</h:inputText>
+				
+				<h:outputText value="&lt;br /&gt;" escape="false"/>
+				<h:outputText value="&lt;br /&gt;" escape="false"/>
+				
+				
+				<h:outputText value="#{msg.rodzajMaskotki}&#160;&#160;&#160;&#160;" />
+				<h:selectOneRadio value="#{maskotkaBean.maskotka.rodzaj}" layout="pageDirection"
+					 required="#{true}">
+					<f:selectItem itemValue="${msg.mis}" itemLabel="&#160;&#160;${msg.mis}" />
+				   	<f:selectItem itemValue="${msg.zwierzatko}" itemLabel="&#160;&#160;${msg.zwierzatko}" />
+				   	<f:selectItem itemValue="${msg.postacB}" itemLabel="&#160;&#160;${msg.postacB}" />
+				   	<f:selectItem itemValue="${msg.postacF}" itemLabel="&#160;&#160;${msg.postacF}" />
+				   	<f:selectItem itemValue="${msg.pacynka}" itemLabel="&#160;&#160;${msg.pacynka}" />
+				<f:ajax execute="@this" render="messages beanState" />
+				</h:selectOneRadio>
+				
+				<h:outputText value="&lt;br /&gt;" escape="false"/>
+				<h:outputText value="&lt;br /&gt;" escape="false"/>
+				
+				<h:outputText value="#{msg.materialMaskotki}&#160;&#160;&#160;&#160;" />
+				<h:selectOneMenu value="#{maskotkaBean.maskotka.material}">
+				   <f:selectItem itemValue="${msg.plusz}" itemLabel="${msg.plusz}" />
+				   <f:selectItem itemValue="${msg.bawelna}" itemLabel="${msg.bawelna}" />	 
+				   <f:selectItem itemValue="${msg.len}" itemLabel="${msg.len}" />	
+				   <f:selectItem itemValue="${msg.dzianina}" itemLabel="${msg.dzianina}" />	
+				   <f:selectItem itemValue="${msg.welur}" itemLabel="${msg.welur}" />	 
+				   <f:selectItem itemValue="${msg.polar}" itemLabel="${msg.polar}" />	  							
+				</h:selectOneMenu>
+
+				<h:outputText value="#{msg.dataZakupu}&#160;&#160;&#160;&#160;" />
+
+				<rich:calendar value="#{maskotkaBean.maskotka.dateOfBirth}"
+					id="calendar" datePattern="dd.MM.yyyy" showApplyButton="#{true}"
+					cellWidth="24px" cellHeight="22px" style="width:200px">
+					<a4j:ajax render="messages" execute="@this" />
+				</rich:calendar>
+
+				<h:outputText value="#{msg.zdjecieMaskotki}&#160;&#160;&#160;&#160;" />
+				<h:inputText id="zdjecie" value="#{maskotkaBean.maskotka.zdjecie}" required="#{true}"/>
+				
+				<h:outputText value="&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;"/>
+					<h:commandButton value="#{msg.zatwierdzenie}"
+					action="#{maskotkaBean.update}" />
+				
+			</h:panelGrid>
+
+
+			<h:panelGrid>
+				<h:messages id="messages" showDetail="#{true}"
+					showSummary="#{false}" />
+			</h:panelGrid>
+
+			<h:panelGrid id="beanState" columns="2">
+				<h:outputText value="#{msg.imieMaskotki}&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;" />
+				<h:outputText id="nameOutput" value="#{maskotkaBean.maskotka.imie}" />
+
+				<h:outputText value="#{msg.rodzajMaskotki}&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;" />
+				<h:outputText id="rodzajOutput" value="#{maskotkaBean.maskotka.rodzaj}" />
+
+				<h:outputText value="#{msg.dataZakupu}&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;" />
+				<h:outputText id="dobOutput"
+					value="#{maskotkaBean.maskotka.dateOfBirth}" />
+			</h:panelGrid>
+
+		</h:form>
+		
+	</ui:define>
+</ui:composition>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	template="/templates/wyglad.xhtml">
+
+	<ui:define name="glowna">
+		
+		<h:outputStylesheet name="bootstrap/css/bootstrap.min.css" />
+	    <h:outputStylesheet name="bootstrap/css/bootstrap-theme.min.css" />
+	    <h:form>
+	   
+	    
+	     <h:dataTable value="#{maskotkaBean.ownedStroje}" var="item" 
+	   		headerClass="naglowek"
+	   		rowClasses="nieparzyste,parzyste">
+	
+				<f:facet name="header">#{msg.atrybutMaskotki}</f:facet>
+				<h:column>
+					<f:facet name="header">#{msg.nazwaStroju}</f:facet>
+					<h:outputText value="#{item.nazwa}" />
+				</h:column>
+
+				<h:outputText value="&lt;br /&gt;" escape="false"/>
+				<h:outputText value="&lt;br /&gt;" escape="false"/>
+				
+				<h:outputText value="&lt;br /&gt;" escape="false"/>
+				<h:outputText value="&lt;br /&gt;" escape="false"/>
+				
+				<h:column>
+					<f:facet name="header">#{msg.materialStroju}</f:facet>
+					<h:outputText value="#{item.material}" />
+				</h:column>
+
+				<h:column>
+					
+					<h:commandButton value="#{msg.usun}"
+						action="#{maskotkaBean.disposeStroje}" />
+				</h:column>
+				
+
+			</h:dataTable>
+			
+			
+			
+		</h:form>
+
+	</ui:define>
+
+</ui:composition>
